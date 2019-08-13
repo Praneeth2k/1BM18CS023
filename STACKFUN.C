@@ -1,26 +1,36 @@
-//stack operations using functions and by not using global variables
+//stack operations using functions, by not using global variables and using switch statements
 #include<stdio.h>
-void push(int ele,int s[100],int *t);
-int pop(int s[100],int *t);
-void display(int s[100],int t);
+void push(int ele,int s[4],int *t);
+int pop(int s[4],int *t);
+void display(int s[4],int t);
 int main()
 {
- int e;
- int stack[100],top=-1;
- 
- push(12,stack,&top);
- push(23,stack,&top);
- push(111,stack,&top);
- display(stack,top);
- e=pop(stack,&top);
- if(e!=9090)
-  printf("The popped element is %d\n",e);
-  display(stack,top);
+ int e,x,element;
+ int stack[4],top=-1;
+do
+{
+ printf("Press 1 for pushing,2 for popping and 3 for displaying and 4 to exit\n");
+ scanf("%d",&x);
+ switch (x)
+ {
+  case 1:printf("Enter the element that you want to push\n");
+         scanf("%d",&element);
+         push(element,stack,&top);
+         break;
+
+  case 2:e=pop(stack,&top);
+           if(e!=9090)
+             printf("The popped element is %d\n",e);
+             break;
+  case 3:display(stack,top);
+         break;
+  };
+ }while(x!=4);
   return 0;
 }
-void push(int ele,int s[100],int *t)
+void push(int ele,int s[4],int *t)
  {
-  if(*t==99)
+  if(*t==3)
   {
   printf("Stack overflow\n");
   return;
@@ -31,7 +41,7 @@ void push(int ele,int s[100],int *t)
   return;
  }
 
-int pop(int s[100],int *t)
+int pop(int s[4],int *t)
  {
   int ele;
   if(*t==-1)
@@ -43,7 +53,7 @@ int pop(int s[100],int *t)
   *t=*t-1;
    return ele;
   }
-void display(int stack[100],int t)
+void display(int stack[4],int t)
  {
   int i;
   if(t==-1)
