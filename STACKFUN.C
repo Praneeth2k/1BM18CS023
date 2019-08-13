@@ -9,7 +9,7 @@ int main()
  int stack[4],top=-1;
 do
 {
- printf("Press 1 for pushing,2 for popping and 3 for displaying and 4 to exit\n");
+ printf("Press 1 for pushing,2 for popping, 3 for displaying and 4 to exit\n");
  scanf("%d",&x);
  switch (x)
  {
@@ -24,6 +24,9 @@ do
              break;
   case 3:display(stack,top);
          break;
+  case 4: break;
+  default: printf("INVALID INPUT, please enter 1,2,3 or 4 only\n");
+           break;
   };
  }while(x!=4);
   return 0;
