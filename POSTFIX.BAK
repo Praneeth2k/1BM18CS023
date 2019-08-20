@@ -1,0 +1,70 @@
+#include<stdio.h>
+#include<conio.h>
+void push(char e);
+void pop();
+int precedence(char c);
+int top=-1;
+char stack[11];
+void postfix(char arr[11]);
+void main()
+{
+  char infix[11]={'(','A','+','(','B','-','C',')','*','D',')'};
+  clrscr();
+  postfix(infix);
+
+}
+void postfix(char arr[11])
+{
+ int i;
+ for(i=0;i<11;i++)
+  {
+   if(isalpha(arr[i]))
+     printf("%c",arr[i]);
+   else if((arr[i]=='+')||(arr[i]=='-')||(arr[i]=='*')||(arr[i]=='/'))
+    {
+     if((precedence(arr[i])>precedence(stack[top]))||(stack[top]=='(')||(top==-1))
+	push(arr[i]);
+     else
+       {
+       while(precedence(stack[top])>=precedence(arr[i]))
+	 pop();
+	 push(arr[i]);
+       }
+    }
+   if(arr[i]=='(')
+     stack[++top]='(';
+   if(arr[i]==')')
+     {
+      while (stack[top]!='(')
+      {
+       printf("%c",stack[top]);
+       pop();
+      }
+      pop();
+      }
+   }
+    for(i=top;i>=0;i--)
+	  printf("%c",stack[i]);
+   getch();
+   }
+
+void push(char e)
+{
+   stack[++top]=e;
+   return;
+}
+void pop()
+{
+   top--;
+   return;
+}
+int precedence(char c)
+{
+ if((c=='*')||(c=='/'))
+   return 2;
+ else if((c=='+')||(c=='-'))
+   return 1;
+ else
+   return 0;
+}
+
