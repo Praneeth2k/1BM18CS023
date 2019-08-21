@@ -7,13 +7,9 @@ void postfix(char infix[30]);
 int main()
 {
   int t=-1,i=-1;
-  char s[] = "a+b*(c^d-e)^(f+g*h)-i";
-  s[21]='\n';
-
-  
- 
-  
-  
+  char s[30];
+  printf("Enter the string\n");
+  scanf("%[^\n]%*c",s);
   postfix(s);
   return 0;
 }
@@ -55,6 +51,7 @@ void postfix(char infix[30])
   }
     for(i=tops;i>=0;i--)
 	  printf("%c",stack[i]);
+	  printf(" is the corresponding postfix expression");
     
 }
    
