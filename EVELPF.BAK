@@ -1,0 +1,78 @@
+#include<stdio.h>
+#include<conio.h>
+#include<math.h>
+double eval(char pf[40]);
+void push(double stack[40],int *t,double ele);
+void pop(int *t);
+void display(double s[30],int t);
+int main()
+{
+ int i=0;
+ double val;
+ char pf[40];
+ clrscr();
+ printf("Enter the postfix expression");
+ scanf("%c",&pf[i]);
+ i++;
+
+  while((pf[i])!='\0')
+   {
+     scanf("%c",&pf[i]);
+     i++;
+   }
+
+  val=eval(pf);
+  printf("The value of this expression is %f",val);
+  getch();
+  return 0;
+}
+
+double eval(char pf[40])
+{ int i=0,top=-1;
+  char ch;
+  double stack[40],A,B,val;
+  while(pf[i]!='\0')
+  {
+   ch=pf[i];
+   if(isdigit(ch))
+    {
+      double a=(int)ch;
+      push(stack,&top,a);
+      display(stack,top);
+    }
+   else
+    {A=stack[top];
+     pop(&top);
+     B=stack[top];
+     pop(&top);
+     switch(ch){
+	   case '+':val=B+A;
+		    break;
+	   case '-':val=B-A;
+		     break;
+	   case '*':val=B*A;
+		     break;
+	   case '/':val=B/A;
+		    break;
+	   case '^':val=pow(B,A);
+		    break;
+	 }
+	 push(stack,&top,val);
+     }
+	i++;
+   }
+   return stack[top];
+}
+void push(double s[40],int *t,double ele)
+{ *t=*t+1;
+  s[*t]=ele;
+}
+void pop(int *t)
+{ *t=*t-1;
+
+}
+void display(double s[30],int t)
+{int i;
+ for (i=t;i>=0;i--)
+ printf("%f",s[i]);
+ }
