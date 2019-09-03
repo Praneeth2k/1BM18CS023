@@ -12,7 +12,7 @@ void tatime(int b[],int tat[],int n)
 {
     int i;
     tat[0]=b[0];
-    for(i=0;i<n;i++)
+    for(i=1;i<n;i++)
         tat[i]=b[i]+tat[i-1];
 }
 void print(int proces[],int burst[],int n)
