@@ -6,10 +6,9 @@ int precedence(char o);
 void postfix(char infix[30]);
 int main()
 {
-  int t=-1,i=-1;
   char s[30];
   printf("Enter the string\n");
-  scanf("%[^\n]%*c",s);
+  scanf("%s",s);
   postfix(s);
   return 0;
 }
@@ -17,7 +16,7 @@ void postfix(char infix[30])
 {
  int i=0,tops=-1;
  char stack[30];
- while(infix[i]!='\n')
+ while(infix[i]!='\0')
   {
    if(isalpha(infix[i]))
      printf("%c",infix[i]);
